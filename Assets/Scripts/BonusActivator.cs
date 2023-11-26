@@ -13,11 +13,13 @@ public class BonusActivator : MonoBehaviour
         GameEvents._Finish_Rotation += BonusActivate;
     }
 
+    //Start bonus activate coroutine
     private void BonusActivate()
     {
         StartCoroutine(BonusActivateCoroutine());
     }
 
+    //Activate all bonuses effects
     private IEnumerator BonusActivateCoroutine()
     {
         float _delay = 1.5f;

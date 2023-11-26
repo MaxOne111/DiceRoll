@@ -33,7 +33,7 @@ public class DiceRotation : MonoBehaviour, IPointerDownHandler
     private void Awake()
     {
         GameEvents._Finish_Rotation += RotateDiceToSide;
-        GameEvents._Finish_Turn += FinishTurn;
+        GameEvents._Finish_Turn += CanRotate;
     }
 
     private void Start()
@@ -43,6 +43,7 @@ public class DiceRotation : MonoBehaviour, IPointerDownHandler
         _Start_Rotation = transform.eulerAngles;
     }
 
+    //Dice rotation
     private void Rotate()
     {
         IsRotate = true;
@@ -58,17 +59,20 @@ public class DiceRotation : MonoBehaviour, IPointerDownHandler
         }).AddTo(_Disposable);
     }
     
-
+    
+    //Completion of rotation
     public void FinishRotation()
     {
         GameEvents.FinishRotation();
     }
 
-    private void FinishTurn()
+    //Possibility of dice to rotate
+    private void CanRotate()
     {
         IsRotate = false;
     }
 
+    //Rotate dice to random side
     private void RotateDiceToSide()
     {
         _Disposable.Clear();
@@ -78,6 +82,7 @@ public class DiceRotation : MonoBehaviour, IPointerDownHandler
         _Rotate_Speed = _Max_Speed;
     }
     
+    //Direction of rotation in the direction of movement
     public void SetDirection(Transform _node)
     {
         _Direction = _node.position - transform.forward;
@@ -86,7 +91,7 @@ public class DiceRotation : MonoBehaviour, IPointerDownHandler
     private void OnDisable()
     {
         GameEvents._Finish_Rotation -= RotateDiceToSide;
-        GameEvents._Finish_Turn -= FinishTurn;
+        GameEvents._Finish_Turn -= CanRotate;
         
         _Disposable.Clear();
     }

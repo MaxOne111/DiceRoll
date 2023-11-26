@@ -10,6 +10,7 @@ public static class DiceSides
     
     public static int DiceValue { get; private set; }
 
+    //Initialize of dice sides positions
     public static void SidesInit()
     {
         _Side = new Dictionary<int, Vector3>()
@@ -28,12 +29,14 @@ public static class DiceSides
         };
     }
 
+    //Random dice value
     public static int RandomValue()
     {
         int _index = Random.Range(1, _Side.Count);
         return _index;
     }
 
+    //Get of dice side position
     public static Vector3 Side(int _side_Value)
     {
         if (_Side.ContainsKey(_side_Value))

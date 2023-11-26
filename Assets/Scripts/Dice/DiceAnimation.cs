@@ -10,8 +10,7 @@ public class DiceAnimation : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     private DiceRotation _Dice_Rotation;
 
     [SerializeField] private ParticleSystem _Finsh_Light;
-
-
+    
     [SerializeField] private float _Punch_Duration;
     [SerializeField] private float _Increase_Duration;
     private Vector3 _Default_Scale;
@@ -39,17 +38,20 @@ public class DiceAnimation : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     
     }
     
+    //Return default dice scale after increasing
     private void DefaultScale()
     {
         transform.DOScale(_Default_Scale, _Increase_Duration);
     }
 
+    //Increase dice scale when hovering over it with the mouse
     private void ScaleIncrease()
     {
         Vector3 _new_Scale = new Vector3(1.5f, 1.5f, 1.5f);
         transform.DOScale(_new_Scale, _Increase_Duration);
     }
 
+    //Dice scale animation after stopping
     private void FinishAnimation()
     {
         int _vibrato = 0;
@@ -62,11 +64,13 @@ public class DiceAnimation : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     }
 
+    //Light effect when dice bounces off the wall
     public void DiceHit(ParticleSystem _hit_Light)
     {
         _hit_Light.gameObject.SetActive(true);
     }
 
+    //Dice position animation after when adding a bonus value
     public void DiceAddValueAnimation()
     {
         int _vibrato = 0;
@@ -78,6 +82,7 @@ public class DiceAnimation : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         DiceValueChangeParticle();
     }
 
+    //Light particles when getting dice value
     private void DiceValueChangeParticle()
     {
         float _offset = 1.1f;

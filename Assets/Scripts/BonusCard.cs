@@ -27,11 +27,13 @@ public class BonusCard : MonoBehaviour
         StarsResetTransform();
     }
 
+    //Activate bonus effect
     public void Activate(Transform _dice)
     {
         StartCoroutine(AddValue(_dice));
     }
 
+    //Start stars particles movement to dice and add value to current dice value
     private IEnumerator AddValue(Transform _dice)
     {
         _Stars.transform.localPosition = CardPosition(_dice);
@@ -58,6 +60,7 @@ public class BonusCard : MonoBehaviour
         
     }
 
+    //Get ui bonus card position on the world
     private Vector3 CardPosition(Transform _dice)
     {
         float distanceFromCamera = (_dice.position - _Camera.transform.position).magnitude;
@@ -69,6 +72,7 @@ public class BonusCard : MonoBehaviour
         return _world_Card_Position;
     }
 
+    //Card position animation after bonus activate
     private void CardAnimation()
     {
         float _duration = 0.5f;
@@ -80,11 +84,13 @@ public class BonusCard : MonoBehaviour
         transform.DOPunchPosition(_punch_Force, _duration, _vibrato, _elasticity);
     }
 
+    //Show added value on the card
     private void ShowValueText()
     {
         _Value_Text.text = $"+{_Value.ToString()}";
     }
 
+    //Start stars position on the world
     private void StarsResetTransform()
     {
         _Stars.transform.parent = null;

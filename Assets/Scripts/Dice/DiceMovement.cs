@@ -31,6 +31,7 @@ public class DiceMovement : MonoBehaviour
         _Follow.followSpeed = _Max_Speed;
     }
 
+    //Slow down the movement of the dice
     private void SlowingDown()
     {
         _Follow.follow = true;
@@ -42,6 +43,7 @@ public class DiceMovement : MonoBehaviour
         }).AddTo(_Disposable);
     }
 
+    //Stop movement at the end of the rotation
     private void FinishRotation()
     {
         _Disposable.Clear();

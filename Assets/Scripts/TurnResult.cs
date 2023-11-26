@@ -18,6 +18,7 @@ public class TurnResult : MonoBehaviour
         GameEvents._Turn_Result += CalculateResult;
     }
 
+    //Start value for compare
     private void StartValue()
     {
         int _min_Value = 1;
@@ -26,6 +27,7 @@ public class TurnResult : MonoBehaviour
         ValueForCompare.Value = Random.Range(_min_Value, _max_Value);
     }
 
+    //Compare dice value and value for compare
     private void CalculateResult()
     {
         if(DiceSides.DiceValue >= ValueForCompare.Value)
@@ -40,7 +42,7 @@ public class TurnResult : MonoBehaviour
         GameEvents.FinishTurn();
     }
     
-
+    
     private void OnDisable()
     {
         GameEvents._Start_Turn -= StartValue;

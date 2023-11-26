@@ -37,16 +37,19 @@ public class GameUI : MonoBehaviour
         ShowValueForCompare();
     }
 
+    //Lock screen for ui activity
     private void LockScreen()
     {
         _Lock_Panel.SetActive(true);
     }
 
+    //Unlock screen for ui activity
     private void UnlockScreen()
     {
         _Lock_Panel.SetActive(false);
     }
 
+    //Show panel with text "Click to roll"
     private void ClickToRollShow()
     {
         float _duration = 0.5f;
@@ -59,6 +62,7 @@ public class GameUI : MonoBehaviour
         _text.DOFade(_alpha, _duration);
     }
     
+    //Hide panel with text "Click to roll"
     private void ClickToRollHide()
     {
         float _duration = 0.5f;
@@ -71,6 +75,7 @@ public class GameUI : MonoBehaviour
         _text.DOFade(_alpha, _duration);
     }
 
+    //Show current value for compare
     private void ShowValueForCompare()
     {
         _Turn_Result.ValueForCompare.Subscribe(_ =>
@@ -80,6 +85,7 @@ public class GameUI : MonoBehaviour
         }).AddTo(_Disposable);
     }
 
+    //Show result text
     private void ShowResult()
     {
         Sequence _sequence = DOTween.Sequence();
